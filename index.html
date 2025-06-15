@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema InfoSafe</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+      text-align: center;
+      color: #007bff;
+    }
+    .unidade {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-salvar { background-color: #28a745; }
+    .btn-cancelar { background-color: #dc3545; }
+    .input-text {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .modal, .detalhes, #tela-editar, #tela-detalhes {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+  
+    <div id="tela-principal">
+      <h1>Sistema InfoSafe</h1>
+      <input type="text" placeholder="Buscar Unidade de Saúde" class="input-text">
+
+      <div class="unidade">
+        <span onclick="abrirDetalhes()">Unidade 1 - Centro de Saúde A - Tempo de Espera: 30 minutos</span>
+        <button class="btn" onclick="abrirEditar()">Editar Tempo</button>
+      </div>
+      <div class="unidade">
+        <span onclick="abrirDetalhes()">Unidade 2 - Hospital Municipal B - Tempo de Espera: 1 hora</span>
+        <button class="btn" onclick="abrirEditar()">Editar Tempo</button>
+      </div>
+      <div class="unidade">
+        <span onclick="abrirDetalhes()">Unidade 3 - Posto de Saúde C - Tempo de Espera: 20 minutos</span>
+        <button class="btn" onclick="abrirEditar()">Editar Tempo</button>
+      </div>
+    </div>
+
+    
+    <div id="tela-editar" class="modal">
+      <h2>Editar Tempo de Espera</h2>
+      <label> Novo Tempo de Espera (minutos): </label>
+      <input type="number" class="input-text">
+      <div>
+        <button class="btn btn-salvar" onclick="voltarParaPrincipal()">Salvar</button>
+        <button class="btn btn-cancelar" onclick="voltarParaPrincipal()">Cancelar</button>
+      </div>
+    </div>
+
+    
+    <div id="tela-detalhes" class="detalhes">
+      <h2>Detalhes da Unidade</h2>
+      <p><strong>Nome:</strong> Centro de Saúde A</p>
+      <p><strong>Endereço:</strong> Rua Principal, 123</p>
+      <p><strong>Telefone:</strong> (51) 3333-1234</p>
+      <p><strong>Especialidades:</strong> Clínica Geral, Pediatria</p>
+      <p><strong>Tempo de Espera:</strong> 1 minuto</p>
+      <p><strong>Histórico de Espera:</strong><br>Seg: 45 min<br>Ter: 30 min<br>Qua: 15 min</p>
+      <button class="btn" onclick="voltarParaPrincipal()">Voltar para Lista</button>
+    </div>
+  </div>
+
+  <script>
+    const telaPrincipal = document.getElementById('tela-principal');
+    const telaEditar = document.getElementById('tela-editar');
+    const telaDetalhes = document.getElementById('tela-detalhes');
+
+    function abrirEditar() {
+      telaPrincipal.style.display = 'none';
+      telaEditar.style.display = 'block';
+    }
+
+    function abrirDetalhes() {
+      telaPrincipal.style.display = 'none';
+      telaDetalhes.style.display = 'block';
+    }
+
+    function voltarParaPrincipal() {
+      telaEditar.style.display = 'none';
+      telaDetalhes.style.display = 'none';
+      telaPrincipal.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
